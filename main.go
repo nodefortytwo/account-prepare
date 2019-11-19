@@ -10,6 +10,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/sts"
 	log "github.com/sirupsen/logrus"
 
+	"github.com/nodefortytwo/account-prepare/pkg/ecs"
 	"github.com/nodefortytwo/account-prepare/pkg/vpc"
 )
 
@@ -29,7 +30,13 @@ func main() {
 		log.Warning("user aborted")
 		os.Exit(0)
 	}
+
 	err = vpc.Run()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = ecs.Run()
 	if err != nil {
 		log.Fatal(err)
 	}

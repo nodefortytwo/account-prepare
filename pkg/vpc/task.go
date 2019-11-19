@@ -46,7 +46,7 @@ func Run() error {
 			return err
 		}
 	}
-	log.Warn("all default VPCs deleted")
+	log.Warn("All default VPCs deleted")
 	return nil
 }
 
